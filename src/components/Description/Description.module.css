@@ -1,0 +1,13 @@
+.description-container {
+  max-width: 60dvw;
+  margin: 0 auto;
+}
+
+.title {
+  color: #ccc;
+}
+
+.description {
+  padding-top: 4px;
+  font-size: 20px;
+}
