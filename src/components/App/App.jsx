@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
-import Description from "./Description/Description.jsx";
-import Feedback from "./Feedback/Feedback.jsx";
-import Options from "./Options/Options.jsx";
+import Description from "../Description/Description.jsx";
+import Feedback from "../Feedback/Feedback.jsx";
+import Options from "../Options/Options.jsx";
+import Logo from "../Logo/Logo.jsx";
+import css from "./App.module.css";
 
 export default function App() {
   const initFeedbackState = {
@@ -42,13 +44,24 @@ export default function App() {
 
   return (
     <>
+      <Logo />
       <Description />
-      <Options options={options} onUpdateFeedback={onUpdateFeedback} />
-      <button onClick={resetState}>Reset</button>
+      <Options
+        options={options}
+        onUpdateFeedback={onUpdateFeedback}
+        onReset={resetState}
+        total={total}
+      />
       {total ? (
-        <Feedback {...feedback} total={total} positivePercentage={positivePercentage} />
+        <Feedback
+          {...feedback}
+          total={total}
+          positivePercentage={positivePercentage}
+        />
       ) : (
-        <p> There is no feedback yet</p>
+        <section title="No feedback yet">
+          <p className={css.notification}> There is no feedback yet</p>
+        </section>
       )}
     </>
   );

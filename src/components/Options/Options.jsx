@@ -1,9 +1,8 @@
 import css from "./Options.module.css";
 
-export default function Options({ options, onUpdateFeedback }) {
-  console.log(options);
+export default function Options({ options, onUpdateFeedback, onReset, total }) {
   return (
-    <div className={css.options}>
+    <section title="Options" className={css.options}>
       {options.map(option => (
         <button
           className={css.button}
@@ -13,6 +12,11 @@ export default function Options({ options, onUpdateFeedback }) {
           {option}
         </button>
       ))}
-    </div>
+      {total > 0 && (
+        <button type="button" onClick={onReset}>
+          Reset
+        </button>
+      )}
+    </section>
   );
 }
