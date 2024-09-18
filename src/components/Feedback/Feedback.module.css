@@ -1,16 +1,8 @@
 .feedback {
-    margin: 10px 0;
+  list-style: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 10px;
-}
-
-.button {
-  width: 100px;
-  font-size: 20px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-shadow: 0 1px 7px rgba(255, 255, 255, 0.3);
+  flex-direction: column;
+  margin-left: 40px;
+  font-size: 22px;
 }

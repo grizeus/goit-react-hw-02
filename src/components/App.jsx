@@ -15,18 +15,19 @@ export default function App() {
     return JSON.parse(localStorage.getItem("feedback")) ?? initFeedbackState;
   });
 
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
+  const total = feedback.good + feedback.neutral + feedback.bad;
+  const positivePercentage = Math.round((feedback.good / total) * 100);
+  const options = Object.keys(feedback);
 
   useEffect(() => {
     localStorage.setItem("feedback", JSON.stringify(feedback));
   }, [feedback]);
 
   useEffect(() => {
-    document.title = totalFeedback
-      ? `Positive feedback ${positiveFeedback}%`
+    document.title = total
+      ? `Positive feedback ${positivePercentage}%`
       : "No feedback yet";
-  }, [totalFeedback, positiveFeedback]);
+  }, [total, positivePercentage]);
 
   const onUpdateFeedback = type => {
     setFeedback({
@@ -42,10 +43,10 @@ export default function App() {
   return (
     <>
       <Description />
-      <Options {...feedback} />
+      <Options options={options} onUpdateFeedback={onUpdateFeedback} />
       <button onClick={resetState}>Reset</button>
-      {totalFeedback ? (
-        <Feedback onUpdate={onUpdateFeedback} />
+      {total ? (
+        <Feedback {...feedback} total={total} positivePercentage={positivePercentage} />
       ) : (
         <p> There is no feedback yet</p>
       )}
