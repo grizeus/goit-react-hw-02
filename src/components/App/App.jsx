@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
+import Logo from "../Logo/Logo.jsx";
 import Description from "../Description/Description.jsx";
 import Feedback from "../Feedback/Feedback.jsx";
 import Options from "../Options/Options.jsx";
-import Logo from "../Logo/Logo.jsx";
-import css from "./App.module.css";
+import Notification from "../Notification/Notification.jsx";
 
 export default function App() {
   const initFeedbackState = {
@@ -59,9 +59,7 @@ export default function App() {
           positivePercentage={positivePercentage}
         />
       ) : (
-        <section title="No feedback yet">
-          <p className={css.notification}> There is no feedback yet</p>
-        </section>
+        <Notification />
       )}
     </>
   );
